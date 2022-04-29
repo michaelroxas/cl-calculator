@@ -10,11 +10,35 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
+
+	<script type="text/javascript" src="script.js"></script>
+
 	<h1>Contact Lens Calculator</h1>
-	<input type="number" name="right-sph" placeholder="SPH">
-	<input type="number" name="right-cyl" placeholder="CYL">
-	<input type="number" name="right-axis" placeholder="AXIS">
-	<input class="compute" type="button" value="Compute Rx">
-	<h2 class="cl-rx"></h2>
+	<p>
+	<label>Enter Rx:</label>
+	<input 
+		id="inputSphere" 
+		type="number" 
+		name="sph" 
+		placeholder="SPH"
+		oninput="sphConverter(this.value)"
+		onchange="sphConverter(this.value">
+	</p>
+	<p>SPH CL: 
+		<span id="outputSph"></span>
+	</p>
+
+
+<script type="text/javascript">
+	function sphConverter(valNum) {
+  	valNum = parseFloat(valNum);
+  	sphRx = (valNum)/(1-(0.012)*(valNum))
+
+  	document.getElementById("outputSph").innerHTML= (Math.round(sphRx * 4) / 4).toFixed(2)
+}
+
+
+</script>
+
 </body>
 </html>
